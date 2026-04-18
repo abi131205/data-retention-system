@@ -2,14 +2,12 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// Generate Token
 const generateToken = (id, role) => {
   return jwt.sign({ id, role }, process.env.JWT_SECRET, {
     expiresIn: "7d",
   });
 };
 
-// REGISTER
 exports.registerUser = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -21,7 +19,6 @@ exports.registerUser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // 🔥 IMPORTANT: default role = user
     const user = await User.create({
       name,
       email,
@@ -42,7 +39,6 @@ exports.registerUser = async (req, res) => {
   }
 };
 
-// LOGIN
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;

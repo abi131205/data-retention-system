@@ -14,7 +14,7 @@ function Dashboard() {
     total: 0,
     active: 0,
     archived: 0,
-    nearExpiry: 0, // ✅ ADDED
+    nearExpiry: 0, 
     categories: [],
   });
 

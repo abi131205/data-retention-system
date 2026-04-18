@@ -8,7 +8,6 @@ function Policies() {
 
   const token = localStorage.getItem("token");
 
-  // 🔥 Fetch Policies
   const fetchPolicies = useCallback(async () => {
     try {
       const res = await axios.get(
@@ -30,13 +29,12 @@ function Policies() {
     fetchPolicies();
   }, [fetchPolicies]);
 
-  // 🔥 Create Policy (CASE FIX HERE)
   const createPolicy = async () => {
     try {
       await axios.post(
         "http://localhost:5000/api/policies",
         {
-          category: category.toLowerCase(), // ✅ FIX
+          category: category.toLowerCase(), 
           retentionDays,
         },
         {

@@ -10,7 +10,6 @@ function Records() {
 
   const token = localStorage.getItem("token");
 
-  // 🔥 Fetch Records
   const fetchRecords = useCallback(async () => {
     try {
       const res = await axios.get(
@@ -32,7 +31,6 @@ function Records() {
     fetchRecords();
   }, [fetchRecords]);
 
-  // 🔥 Create Record
   const createRecord = async () => {
     try {
       await axios.post(
@@ -64,7 +62,6 @@ function Records() {
     }
   };
 
-  // 🔥 Delete Record
   const deleteRecord = async (id) => {
     try {
       await axios.delete(

@@ -2,12 +2,10 @@ const Record = require("../models/Record");
 const Policy = require("../models/Policy");
 
 
-// 🔥 CREATE RECORD WITH EXPIRY
 exports.createRecord = async (req, res) => {
   try {
     const { title, content, category } = req.body;
 
-    // 🔍 Find matching policy
     const policy = await Policy.findOne({ category });
 
     if (!policy) {
@@ -18,7 +16,6 @@ exports.createRecord = async (req, res) => {
 
     const createdAt = new Date();
 
-    // ✅ CORRECT expiry calculation (30 sec for testing)
     const expiryDate = new Date(createdAt.getTime() + 30 * 1000);
 
     const record = new Record({
@@ -41,7 +38,6 @@ exports.createRecord = async (req, res) => {
 };
 
 
-// 🔥 GET RECORDS
 exports.getRecords = async (req, res) => {
   try {
     const records = await Record.find();
@@ -52,7 +48,6 @@ exports.getRecords = async (req, res) => {
 };
 
 
-// 🔥 UPDATE RECORD
 exports.updateRecord = async (req, res) => {
   try {
     const record = await Record.findById(req.params.id);
@@ -61,7 +56,6 @@ exports.updateRecord = async (req, res) => {
       return res.status(404).json({ message: "Record not found" });
     }
 
-    // ❌ BLOCK EDIT IF ARCHIVED
     if (record.status === "archived") {
       return res.status(400).json({
         message: "Archived records cannot be edited"
@@ -81,7 +75,6 @@ exports.updateRecord = async (req, res) => {
 };
 
 
-// 🔥 DELETE RECORD
 exports.deleteRecord = async (req, res) => {
   try {
     await Record.findByIdAndDelete(req.params.id);

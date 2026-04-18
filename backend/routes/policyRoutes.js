@@ -9,10 +9,8 @@ const {
   getPolicies
 } = require("../controllers/policyController");
 
-// Create Policy
 router.post("/", authMiddleware, adminMiddleware, createPolicy);
 
-// Get Policies
 router.get("/", authMiddleware, adminMiddleware, getPolicies);
 
 module.exports = router;

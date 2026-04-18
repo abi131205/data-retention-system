@@ -1,14 +1,11 @@
 const Policy = require("../models/Policy");
 
-// ✅ CREATE POLICY
 exports.createPolicy = async (req, res) => {
   try {
     let { category, retentionDays } = req.body;
 
-    // 🔥 normalize
     category = category.toLowerCase();
 
-    // remove old
     await Policy.deleteMany({ category });
 
     const policy = await Policy.create({
@@ -24,7 +21,6 @@ exports.createPolicy = async (req, res) => {
   }
 };
 
-// ✅ GET POLICIES (THIS WAS MISSING / BROKEN)
 exports.getPolicies = async (req, res) => {
   try {
     const policies = await Policy.find();

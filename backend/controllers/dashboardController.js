@@ -8,7 +8,6 @@ exports.getDashboardStats = async (req, res) => {
 
     const archived = await Record.countDocuments({ status: "archived" });
 
-    // 🔥 NEAR EXPIRY (within next 1 minute for demo)
     const now = new Date();
     const nextMinute = new Date(now.getTime() + 60 * 1000);
 
@@ -17,7 +16,6 @@ exports.getDashboardStats = async (req, res) => {
       status: "active",
     });
 
-    // 🔥 CATEGORY STATS
     const categories = await Record.aggregate([
       {
         $group: {
@@ -31,7 +29,7 @@ exports.getDashboardStats = async (req, res) => {
       total,
       active,
       archived,
-      nearExpiry, // ✅ ADDED
+      nearExpiry,
       categories: categories.map((c) => ({
         category: c._id,
         count: c.count,

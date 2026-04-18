@@ -15,7 +15,6 @@ function Login() {
         }
       );
 
-      // ✅ Store token properly
       localStorage.setItem("token", res.data.token);
 
       alert("Login successful");
