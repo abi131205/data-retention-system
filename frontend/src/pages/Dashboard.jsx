@@ -24,7 +24,7 @@ function Dashboard() {
         const token = localStorage.getItem("token");
 
         const res = await axios.get(
-          "http://localhost:5000/api/dashboard",
+          "http://data-retention-system.onrender.com/api/dashboard",
           {
             headers: {
               Authorization: `Bearer ${token}`,

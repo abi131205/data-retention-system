@@ -11,7 +11,7 @@ function Policies() {
   const fetchPolicies = useCallback(async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/policies",
+        "http://data-retention-system.onrender.com/api/policies",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -32,7 +32,7 @@ function Policies() {
   const createPolicy = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/policies",
+        "http://data-retention-system.onrender.com/api/policies",
         {
           category: category.toLowerCase(), 
           retentionDays,
