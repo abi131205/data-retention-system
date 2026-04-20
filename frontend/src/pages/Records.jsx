@@ -13,7 +13,7 @@ function Records() {
   const fetchRecords = useCallback(async () => {
     try {
       const res = await axios.get(
-        "http://data-retention-system.onrender.com/api/records",
+        "https://data-retention-system.onrender.com/api/records",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -34,7 +34,7 @@ function Records() {
   const createRecord = async () => {
     try {
       await axios.post(
-        "http://data-retention-system.onrender.com/api/records",
+        "https://data-retention-system.onrender.com/api/records",
         {
           title,
           content,
@@ -65,7 +65,7 @@ function Records() {
   const deleteRecord = async (id) => {
     try {
       await axios.delete(
-        `http://data-retention-system.onrender.com/api/records/${id}`,
+        `https://data-retention-system.onrender.com/api/records/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

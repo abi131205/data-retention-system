@@ -8,7 +8,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       const res = await axios.post(
-        "http://data-retention-system.onrender.com/api/auth/login",
+        "https://data-retention-system.onrender.com/api/auth/login",
         {
           email,
           password,
